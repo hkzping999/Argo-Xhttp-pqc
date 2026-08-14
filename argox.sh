@@ -35,8 +35,8 @@ SERVICE_FIREWALL_STATE_FILE="${FIREWALL_STATE_DIR}/service_ports.list"
 # （如 /dev/fd/63），不是可重复读取的普通文件；create_shortcut() 需要用
 # 这个地址重新拉取一份完整脚本落盘，而不是尝试从已经被读过一部分的管道
 # 里 cp 自己（那样会读到不完整/被截断的内容）。
-ARGOX_REPO_URL='https://github.com/hkzping999/Argo-reality-pqc'
-ARGOX_RAW_URL='https://raw.githubusercontent.com/hkzping999/Argo-reality-pqc/main/argox.sh'
+ARGOX_REPO_URL='https://github.com/hkzping999/Argo-Xhttp-pqc'
+ARGOX_RAW_URL='https://raw.githubusercontent.com/hkzping999/Argo-Xhttp-pqc/main/argox.sh'
 TLS_SERVER='addons.mozilla.org'
 # Reality 客户端连接地址：留空则使用 SERVER_IP；不要与 Reality 伪装 SNI/TLS_SERVER 混用。
 REALITY_DOMAIN=${REALITY_DOMAIN:-''}
