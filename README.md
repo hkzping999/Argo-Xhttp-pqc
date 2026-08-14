@@ -10,6 +10,10 @@
   -> Xray VLESS + XHTTP packet-up
   -> VLESS Encryption（ML-KEM-768 + X25519，1-RTT）
 ```
+```
+bash <(wget -qO- https://github.com/hkzping999/Argo-Xhttp-pqc/blob/main/argox.sh)
+
+```
 
 ECH 保护客户端到 Cloudflare 边缘的 ClientHello；PQC 由 VLESS Encryption
 提供端到端的混合后量子握手。Cloudflare 负责边缘 TLS/ECH，VPS 不保存 ECH
