@@ -1,4 +1,4 @@
-# ArgoX 2.3.0：VLESS + XHTTP + PQC + ECH + Argo + CDN
+# ArgoX 2.3.1：VLESS + XHTTP + PQC + ECH + Argo + CDN
 
 本版本为固定 Cloudflare Tunnel 增加一条完整链路：
 
@@ -9,10 +9,6 @@
   -> Nginx HTTP/1.1 反代
   -> Xray VLESS + XHTTP packet-up
   -> VLESS Encryption（ML-KEM-768 + X25519，1-RTT）
-```
-```
-bash <(wget -qO- https://github.com/hkzping999/Argo-Xhttp-pqc/blob/main/argox.sh)
-
 ```
 
 ECH 保护客户端到 Cloudflare 边缘的 ClientHello；PQC 由 VLESS Encryption
@@ -32,7 +28,31 @@ ECH 保护客户端到 Cloudflare 边缘的 ClientHello；PQC 由 VLESS Encrypti
 
 临时 `trycloudflare.com` 隧道不会输出 XHTTP + PQC + ECH 组合节点。
 
-## 推荐安装
+## 傻瓜式固定域名安装
+
+这是推荐的首次部署方式。先在 Cloudflare Zero Trust 后台完成两件事：
+
+1. 创建 Cloudflare Tunnel。
+2. 为该 Tunnel 添加与你要输入的固定域名相同的 Public Hostname。
+
+然后在 VPS 上执行：
+
+```bash
+sudo bash argox.sh -c -g
+```
+
+也可以直接运行脚本，在首次安装菜单中选择第 `3` 项。流程只会询问：
+
+1. 固定 Tunnel 域名。
+2. 该 Tunnel 的 Token（隐藏输入）或单行 credentials JSON。
+
+其余参数会自动使用安全默认值：`VLESS + XHTTP packet-up`、PQC 1-RTT、
+ECH、Cloudflare CDN、随机 UUID 与路径，以及自动避开已占用的本地端口。
+该模式拒绝 `trycloudflare.com`、无效凭据和已存在的 ArgoX 安装，避免静默
+降级为临时隧道。只有 Tunnel Token/JSON 适用于此引导流程；若要让脚本通过
+Cloudflare API 创建 Tunnel，请使用下面的高级模板。
+
+## 高级模板安装
 
 先复制专用模板，至少替换 `ARGO_DOMAIN` 和 `ARGO_AUTH`：
 
