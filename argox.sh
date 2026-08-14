@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # 当前脚本版本号
-VERSION='2.3.1-guided-fixed-domain-xhttp-pqc-ech (2026.08.13)'
+VERSION='2.3.4-guided-fixed-domain-xhttp-pqc-ech (2026.08.13)'
 
 # Strong edition: protect generated credentials and disable third-party GitHub proxy by default.
 umask 077
